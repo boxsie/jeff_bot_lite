@@ -13,7 +13,6 @@ async def friday(ctx):
       
 @commands.command(name='xmas', help='Xmas Countdown')
 async def xmas(ctx):
-    kekwx = discord.utils.get(ctx.bot.emojis)
     today = date.today()
     xmas_day = date(today.year, 12, 25)
     delta = xmas_day - today
