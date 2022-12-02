@@ -1,0 +1,48 @@
+{
+  "name": "hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass resources -o static && browserify resources -o static/bundle.js",
+    "watch": "node-sass resources -o static && watchify resources -o static/bundle.js",
+    "start": "npm run build && node -r esm main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/vue-fontawesome": "^2.0.2",
+    "browserify": "^16.5.0",
+    "esm": "^3.2.25",
+    "jquery": "^3.4.1",
+    "node-static": "^0.7.11",
+    "watchify": "^3.11.1",
+    "ws": "^7.4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babelify": "^10.0.0",
+    "bootstrap": "^4.6.0",
+    "node-sass": "^4.12.0",
+    "vue": "^2.6.10"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  },
+  "browser": {
+    "bootstrap": "bootstrap/dist/js/bootstrap.bundle.min.js",
+    "vue": "vue/dist/vue.common.js"
+  }
+}

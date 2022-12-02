@@ -1,0 +1,12 @@
+discord.py[voice]
+google-api-python-client
+google-cloud-storage
+google-cloud-pubsub
+Google-Images-Search
+Pillow
+websockets
+nest-asyncio
+tqdm
+httpx
+numpy
+texttable
