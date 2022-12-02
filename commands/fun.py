@@ -12,14 +12,15 @@ async def friday(ctx):
       
       
 @commands.command(name='xmas', help='Xmas Countdown')
-async def xmas(ctx):      
-        today = datetime.date.today()
-        xmas_day = date(today.year, 12, 25)
-        delta = xmas_day - today
-        if delta < 0:
-            await ctx.send(f"It's bin 'n gone mate :KEKWX:")
-        elif delta == 0: 
-            await ctx.send(f"Merry Xmas :KEKWX: \nhttps://youtu.be/pHMhEWyqj2g?t=75")
-        else:    
-            await ctx.send(f"It's {delta.days} until Xmas!!!!")
+async def xmas(ctx):
+    kekwx = discord.utils.get(ctx.bot.emojis)
+    today = date.today()
+    xmas_day = date(today.year, 12, 25)
+    delta = xmas_day - today
+    if delta.days < 0:
+        await ctx.send(f"🎄🎄🎄 It's bin 'n gone mate {str(kekwx)} 🎄🎄🎄")
+    elif delta.days == 0: 
+        await ctx.send(f"🎄🎄🎄 Merry Xmas 🎄🎄🎄 \nhttps://youtu.be/pHMhEWyqj2g?t=75")
+    else:    
+        await ctx.send(f"🎄🎄🎄 It's {delta.days} days until Xmas 🎄🎄🎄")
         
