@@ -14,7 +14,7 @@ from utils.config import Config
 from cogs.sound_board import SoundBoard
 from cogs.entrances import Entrances
 from cogs.google_img import GoogleImages
-from commands.friday import friday
+from commands.fun import friday, xmas
 from discord import Intents
 
 CONFIG_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.json')
@@ -106,7 +106,8 @@ async def main():
         ))
 
         bot.add_command(friday)
-
+        bot.add_command(xmas)
+        
         await bot.start(args['discord_token'])
 
 
