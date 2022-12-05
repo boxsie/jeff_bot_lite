@@ -17,12 +17,12 @@ async def xmas(ctx):
     today = datetime.today()
     xmas_day = datetime(today.year, 12, 25)
     delta = xmas_day - today
-    if delta.days < 0:
+    if delta.seconds < 0:
         await ctx.send(f"🎄🎄🎄 It's bin 'n gone mate 🎄🎄🎄")
-    elif delta.days == 0: 
+    elif delta.days == 0 and delta.seconds <= 60 * 60 * 24:
         await ctx.send(f"🎄🎄🎄 Merry Xmas 🎄🎄🎄 \nhttps://youtu.be/pHMhEWyqj2g?t=75")
     else:    
         hours = int(delta.seconds // (60 * 60))
         mins = int((delta.seconds // 60) % 60)  
-        await ctx.send(f"🎄🎄🎄 It's {delta.days} days, {hours} hours & {mins} minutes until Xmas !! 🎄🎄🎄")
+        await ctx.send(f"🎄🎄🎄 It's {delta.days} days, {hours} hours & {mins} minutes until Christmas !! 🎄🎄🎄")
         
