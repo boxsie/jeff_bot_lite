@@ -40,7 +40,7 @@ class Birthdays(commands.Cog):
         
         self.user_manager.add_birthday(user.id, formatted_date)
 
-        ret_text = f'\'{user}\' just added the birthday \'{formatted_date}\''
+        ret_text = f'\'{user.name}\' just added the birthday \'{formatted_date}\''
         print(ret_text)
         await ctx.send(ret_text)
 
