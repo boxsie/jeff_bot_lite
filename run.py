@@ -14,8 +14,10 @@ from utils.config import Config
 from cogs.sound_board import SoundBoard
 from cogs.entrances import Entrances
 from cogs.google_img import GoogleImages
+from cogs.birthdays import Birthdays
 from commands.fun import friday, xmas
 from discord import Intents
+
 
 CONFIG_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.json')
 
@@ -103,6 +105,11 @@ async def main():
             bot=bot,
             api_token=args['gimg_api_token'],
             api_cx=args['gimg_api_cx']
+        ))
+
+        await bot.add_cog(Birthdays(
+            bot=bot,
+            user_manager=user_manager
         ))
 
         bot.add_command(friday)

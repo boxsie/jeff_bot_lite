@@ -1,5 +1,6 @@
 import discord
 import math
+from utils.date_helpers import get_next_occurance
 from discord.ext import commands
 from datetime import datetime, date
 
@@ -9,20 +10,14 @@ async def friday(ctx):
         await ctx.send(f'https://www.youtube.com/watch?v=1TewCPi92ro')
     else:
         await ctx.channel.send(file=discord.File('resources/nedry.gif'))
-
       
       
 @commands.command(name='xmas', help='Xmas Countdown')
 async def xmas(ctx):
-    today = datetime.today()
-    xmas_day = datetime(today.year, 12, 25)
-    delta = xmas_day - today
-    if delta.seconds < 0:
-        await ctx.send(f"🎄🎄🎄 It's bin 'n gone mate 🎄🎄🎄")
-    elif delta.days == 0 and delta.seconds <= 60 * 60 * 24:
+    date_countdown = get_next_occurance(12, 25)
+           
+    if date_countdown.is_today:
         await ctx.send(f"🎄🎄🎄 Merry Xmas 🎄🎄🎄 \nhttps://youtu.be/pHMhEWyqj2g?t=75")
     else:    
-        hours = int(delta.seconds // (60 * 60))
-        mins = int((delta.seconds // 60) % 60)  
-        await ctx.send(f"🎄🎄🎄 It's {delta.days} days, {hours} hours & {mins} minutes until Christmas !! 🎄🎄🎄")
-        
+        await ctx.send(f"🎄🎄🎄 It's {date_countdown.days} days, {date_countdown.hours} "\
+            f"hours & {date_countdown.mins} minutes until Christmas !! 🎄🎄🎄")

@@ -5,14 +5,17 @@ import json
 CONFIG_NAME = 'users'
 
 class BotUser(object):
-    def __init__(self, user_id: str, user_name: str, entrance_filename:str=None):
+    def __init__(self, user_id: str, user_name: str, entrance_filename:str=None, birthday:str=None):
         self.user_id = user_id
         self.user_name = user_name
         self.entrance_filename = entrance_filename
+        self.birthday = birthday
 
     def add_entrance(self, entrance_filename):
         self.entrance_filename = entrance_filename
 
+    def add_birthday(self, birthday):
+        self.birthday = birthday
 
 class UserManager():
     def __init__(self, user_repo):
@@ -31,7 +34,12 @@ class UserManager():
 
         with open(self.users_json_file.path, 'r', encoding='utf-8') as json_txt:
             users_json = json.load(json_txt)
-            self.users = [BotUser(user_id=u['user_id'], user_name=u['user_name'], entrance_filename=u['entrance_filename']) for u in users_json]
+            self.users = [BotUser(
+                user_id=u['user_id'], 
+                user_name=u['user_name'], 
+                entrance_filename=u['entrance_filename'],
+                birthday=u['birthday']
+            ) for u in users_json]
 
         print('Load complete')
 
@@ -72,6 +80,16 @@ class UserManager():
 
         user.add_entrance(entrance_sound)
         self._save_user_json()
+
+
+    def add_birthday(self, user_id, birthday):
+        user = self.get_user(user_id)
+
+        if not user:
+            return
+
+        user.add_birthday(birthday)
+        self._save_user_json()   
 
 
     def get_user(self, user_id):
