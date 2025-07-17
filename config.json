@@ -1,7 +1,20 @@
 {
-    "path": {
-        "sounds": "sounds",
-        "resources": "resources",        
-        "users": "users"
+  "paths": {
+    "sounds": {
+      "local": "data/sounds",
+      "bucket": "sounds"
+    },
+    "resources": {
+      "local": "data/resources",
+      "bucket": "resources"
+    },
+    "users": {
+      "local": "data/users",
+      "bucket": "users"
+    },
+    "memory": {
+      "local": "data/memory",
+      "bucket": "memory"
     }
+  }
 }
